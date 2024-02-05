@@ -33,7 +33,7 @@ const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => 
   return (
     <>
     <Container maxWidth='xl' sx={{ my: 4 }}>
-            <Typography>Rate Page</Typography>
+            <Typography variant='h4' textAlign={'center'} mb={4}>Exchange Page</Typography>
 
 
             <Paper sx={{ width: '100%' }}>

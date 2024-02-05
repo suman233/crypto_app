@@ -74,30 +74,7 @@ const style = {
     px: 4,
     pb: 3,
 };
-function rateDetails() {
 
-    return (
-        <>
-            {/* 
-            <Button onClick={handleOpen}>Open modal</Button>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </Typography>
-                </Box>
-            </Modal> */}
-        </>
-    )
-}
 
 const rate = () => {
     const { isLoading, data, error } = useQuery({
@@ -153,7 +130,7 @@ const rate = () => {
 
     return (
         <Container maxWidth='xl' sx={{ my: 4 }}>
-            <Typography>Rate Page</Typography>
+            <Typography variant='h4' textAlign={'center'} mb={4}>Coin Rate Page</Typography>
             <Paper sx={{ width: '100%' }}>
                 <TableContainer sx={{ maxHeight: 440 }}>
                     <Table stickyHeader aria-label="sticky table">
