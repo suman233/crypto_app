@@ -1,4 +1,3 @@
-// import "@/styles/globals.css";
 import Wrapper from "@/layout/Wrapper/Wrapper";
 import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";

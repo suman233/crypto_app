@@ -15,6 +15,7 @@ export const endPoints={
         ratedetails: (id: any)=> `/v2/rates/${id}`
     },
     fetchedexchange: {
-        coinexchange: '/v2/exchanges'
+        coinexchange: '/v2/exchanges',
+        exchangedetails: (id: any)=> `/v2/exchanges/${id}`
     }
 }

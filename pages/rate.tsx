@@ -18,6 +18,7 @@ import Button from '@mui/material/Button';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { SingleRate } from '@/typescript/interface/rate.singledt';
+import styles from '@/styles/rate.module.css'
 
 interface Column {
     id: 'name' | 'code' | 'population' | 'size' | 'density';
@@ -194,14 +195,13 @@ const rate = () => {
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             Type: {singledata?.type}
                         </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        <Typography id="modal-modal-description" sx={{ my: 2 }}>
                             Rate: {singledata?.rateUsd}
                         </Typography>
-                        <Button onClick={handleClose} sx={{
-                            textDecoration: 'none', mt: 2,
+                        <Button onClick={handleClose} className={styles.modalbtn} sx={{
+                            textTransform:'none'
                         }}>Close</Button>
                         {/* 
-                        backgroundImage: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%
                         */}
                     </Box>
                 </Modal>
