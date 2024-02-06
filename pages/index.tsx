@@ -107,7 +107,7 @@ export default function Home() {
             </TableHead>
             <TableBody>
               {data?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
+                .map((row: any, index: number) => {
                   return (
                     <>
                       <StyledTableRow key={index}

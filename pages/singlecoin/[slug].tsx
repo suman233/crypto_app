@@ -163,7 +163,7 @@ const singlecoin = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {coinsmarkets?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)?.map((row) => (
+                  {coinsmarkets?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)?.map((row: any) => (
                     <StyledTableRow key={row.name}>
                       <StyledTableCell component="th" scope="row">
                         {row.exchangeId}
@@ -201,7 +201,7 @@ const singlecoin = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {coinhistory?.data?.slice(histpage * rowsPerPageHist, histpage * rowsPerPageHist + rowsPerPageHist)?.map((row) => (
+                  {coinhistory?.data?.slice(histpage * rowsPerPageHist, histpage * rowsPerPageHist + rowsPerPageHist)?.map((row: any) => (
                     <StyledTableRow key={row.name}>
                       <StyledTableCell component="th" scope="row">
                         {row.date}
