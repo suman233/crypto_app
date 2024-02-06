@@ -68,7 +68,7 @@ const markets = (props: any) => {
 
   return (
     <Container>
-      <Typography sx={{ my: 5 }}>Market List</Typography>
+      <Typography variant='h4' sx={{ my: 5, textAlign:'center' }}>Market List</Typography>
       <TableContainer component={Paper}>
         <Table aria-label="customized table">
           <TableHead>
