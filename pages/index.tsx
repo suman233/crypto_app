@@ -7,7 +7,6 @@ import { axiosInstance } from "@/api/axiosinstance";
 import { endPoints } from "@/api/endpoints";
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { useState } from "react";
-import Link from "next/link";
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -17,6 +16,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Root } from "@/typescript/interface/coins";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -110,7 +110,8 @@ export default function Home() {
                 .map((row, index) => {
                   return (
                     <>
-                      <StyledTableRow key={index} component={Link} href={`/singlecoin/${row?.name?.toLowerCase()}`}
+                      <StyledTableRow key={index}
+                        // component={Link} href={`/singlecoin/${row?.name?.toLowerCase()}`}
                         style={{ textDecoration: 'none' }}>
                         <StyledTableCell>
                           {row.rank}
