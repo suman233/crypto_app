@@ -37,32 +37,33 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export async function getStaticProps() {
   const mtdata = await getMareketDetails()
-  return { props: { mtdata } }
+  return { props: { mtdata }, revalidate: 60 }
 }
 
-export const getMareketDetails =async () => {
+export const getMareketDetails = async () => {
 
-    const data = await axiosInstance.get<Root4>(
-      endPoints.fetchedmarkets.allmarket
-    )
-    // const time = data
-    console.log(data.data);
-    return data?.data?.data
-  
+  const data = await axiosInstance.get<Root4>(
+    endPoints.fetchedmarkets.allmarket
+  )
+  // const time = data
+  console.log(data.data);
+  return data?.data?.data
+
 }
 
 const markets = (props: any) => {
   const { data } = useQuery({
     queryKey: ["mkarketlist"],
     queryFn: getMareketDetails,
-    initialData: props.mtdata
-    // return {
-    //   props: {
-    //     time
-    //   }, 
-    //   revalidate: 60
-    // }
 
+    //   return {
+    //     props: {
+    //       mtdata
+    //     }, 
+    //     revalidate: 60
+    //   }
+
+    // }
   })
 
   return (

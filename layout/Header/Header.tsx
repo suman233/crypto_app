@@ -14,6 +14,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import ThemeSwitch from '@/mui_theme/ThemeSwitch'
 
 interface Props {
     /**
@@ -101,6 +102,7 @@ export default function Header(props: Props) {
                     {drawer}
                 </Drawer>
             </nav>
+            {/* <ThemeSwitch/> */}
             <Box component="main" sx={{ p: 3 }}>
                
             </Box>
