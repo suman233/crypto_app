@@ -77,17 +77,28 @@ const style = {
 };
 
 
-const rate = () => {
+export const getRateDetails = async () => {
+    const data = await axiosInstance.get<RootRate>(
+        endPoints.fetchedrates.rates
+    )
+    console.log(data?.data);
+    return data?.data?.data
+}
+
+
+export async function getStaticProps() {
+    const ratedata = await getRateDetails()
+    return { props: { ratedata } }
+}
+
+
+const rate = (props: any) => {
     const { isLoading, data, error } = useQuery({
         queryKey: ["ratelists"],
-        queryFn: async () => {
-            const data = await axiosInstance.get<RootRate>(
-                endPoints.fetchedrates.rates
-            )
-            console.log(data?.data);
-            return data?.data?.data
-        }
+        queryFn: getRateDetails,
+        initialData: props.ratedata
     })
+
 
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -100,6 +111,8 @@ const rate = () => {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
+
+
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
@@ -132,6 +145,11 @@ const rate = () => {
     return (
         <Container maxWidth='xl' sx={{ my: 4 }}>
             <Typography variant='h4' textAlign={'center'} mb={4}>Coin Rate Page</Typography>
+            {
+                isLoading ? (<div>
+                    <h3>Loading...</h3>
+                </div>) : null
+            }
             <Paper sx={{ width: '100%' }}>
                 <TableContainer sx={{ maxHeight: 440 }}>
                     <Table stickyHeader aria-label="sticky table">
@@ -160,22 +178,23 @@ const rate = () => {
                         </TableHead>
                         <TableBody>
 
-                            {data?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((row, index) => {
-                                    return (
-                                        <>
-                                            <TableRow hover key={index} onClick={() => storedetails(row.id)}>
-                                                <TableCell align="center" >{index + 1}</TableCell>
-                                                <TableCell align="center">{row.id}</TableCell>
-                                                <TableCell align="center">{row.symbol}</TableCell>
-                                                <TableCell align="center">{row.currencySymbol}</TableCell>
-                                                <TableCell align="center">{row.type}</TableCell>
-                                                <TableCell align="center">{row.rateUsd}</TableCell>
-                                            </TableRow>
-                                        </>
-                                    )
-                                }
-                                )}
+                            {
+                                data?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    .map((row: any, index: number) => {
+                                        return (
+                                            <>
+                                                <TableRow hover key={index} onClick={() => storedetails(row.id)}>
+                                                    <TableCell align="center" >{index + 1}</TableCell>
+                                                    <TableCell align="center">{row.id}</TableCell>
+                                                    <TableCell align="center">{row.symbol}</TableCell>
+                                                    <TableCell align="center">{row.currencySymbol}</TableCell>
+                                                    <TableCell align="center">{row.type}</TableCell>
+                                                    <TableCell align="center">{row.rateUsd}</TableCell>
+                                                </TableRow>
+                                            </>
+                                        )
+                                    }
+                                    )}
                         </TableBody>
                     </Table>
                 </TableContainer>
@@ -199,7 +218,7 @@ const rate = () => {
                             Rate: {singledata?.rateUsd}
                         </Typography>
                         <Button onClick={handleClose} className={styles.modalbtn} sx={{
-                            textTransform:'none'
+                            textTransform: 'none'
                         }}>Close</Button>
                         {/* 
                         */}
