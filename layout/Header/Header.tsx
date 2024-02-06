@@ -36,15 +36,15 @@ export default function Header(props: Props) {
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-            <Typography variant="h6" sx={{ mx: 2, color:'brown' }}>
+            <Typography variant="h6" sx={{ mx: 2, my:2, color:'brown' }}>
                 CRYPTO
             </Typography>
             <Divider />
             <List>
                 {navItems.map((item, index) => (
                     <ListItem key={index} disablePadding>
-                        <Link href={item==='Home'? '/' : `/${item.toLowerCase()}`}><ListItemButton sx={{ textAlign: 'center' }}>
-                            <ListItemText primary={item} />
+                        <Link style={{textDecoration:'none'}} href={item==='Home'? '/' : `/${item.toLowerCase()}`}><ListItemButton sx={{ textAlign: 'center' }}>
+                            <ListItemText sx={{color:'black'}} primary={item} />
                         </ListItemButton></Link>
                     </ListItem>
                 ))}
@@ -66,7 +66,7 @@ export default function Header(props: Props) {
                         onClick={handleDrawerToggle}
                         sx={{ mr: 2, display: { sm: 'none' } }}
                     >
-                        <MenuIcon />
+                        <MenuIcon sx={{color:'black'}}/>    
                     </IconButton>
                     <Typography
                         variant="h6"
